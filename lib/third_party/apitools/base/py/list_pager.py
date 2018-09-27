@@ -75,6 +75,10 @@ def YieldFromList(
             setattr(request, batch_size_attribute, request_batch_size)
         response = getattr(service, method)(request,
                                             global_params=global_params)
+        #from pprint import pprint
+        #pprint(response)
+        #with open('/Users/nick/dev/tmp/audit-logs/tmp.out', 'a') as f:
+        #    f.write(response)
         items = getattr(response, field)
         if predicate:
             items = list(filter(predicate, items))

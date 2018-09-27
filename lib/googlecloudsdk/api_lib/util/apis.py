@@ -253,6 +253,27 @@ def _CheckResponse(response):
   """
   # This will throw if there was a specific type of error. If not, then we can
   # parse and deal with our own class of errors.
+  #import copy, json
+  #from pprint import pprint
+  #import logging
+  #copied = copy.copy(response).__dict__
+  #try:
+  #    c = json.loads(copied['content'])
+  #    has_token = 'no'
+  #    if 'nextPageToken' in c and c['nextPageToken'] != '':
+  #        has_token = 'yes'
+  #    c = '%d entries; token? %s' % (len(c['entries']), has_token)
+  #except:
+  #    c = copied['content']
+  #copied['content'] = c
+  #print copied
+  #logging.basicConfig(filename='/Users/nick/dev/tmp/audit-logs/api.out', level=logging.DEBUG)
+  #logging.info(copied)
+  #logging.shutdown()
+  #with open('/Users/nick/dev/tmp/audit-logs/api.out', 'a') as f:
+  #    json.dump(copied, f)
+  #    f.write(copied)
+  #pprint(response)
   http_wrapper.CheckResponse(response)
   if not properties.VALUES.core.should_prompt_to_enable_api.GetBool():
     return
